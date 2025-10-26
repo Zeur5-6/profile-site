@@ -1,0 +1,72 @@
+/* styles.css の例 */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, sans-serif;
+  background: #111;  /* 夜基調 */
+  color: #eee;
+}
+
+header {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #00ff99;
+}
+
+section {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* ==== SNS Buttons (scoped) ==== */
+.sns-links{ display:flex; flex-direction:column; gap:10px;
+  max-width: var(--sns-max-w, 320px); width:100%;
+}
+
+/* ボタン本体（ニュアンスだけ軽く。全体へ影響するリセット類なし） */
+.sns-btn{
+  --accent:#888; /* ブランド色はクラスで上書き */
+  display:flex; align-items:center; gap:10px;
+  padding:10px 14px; border-radius:12px;
+  background:#f0f2f6; color:#222; text-decoration:none;
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 1px 2px rgba(0,0,0,.05);
+  line-height:1; cursor:pointer;
+}
+.sns-btn .icon{ width:20px; height:20px; display:grid; place-items:center; color:var(--accent); flex:0 0 20px; }
+.sns-btn .label{ font-size:14px; font-weight:600; }
+
+/* ほんのり視認性だけ。浮かせない */
+.sns-btn:hover{ filter:brightness(0.98); }
+.sns-btn:active{ filter:brightness(0.96); }
+
+/* ダークテーマ対応（既存テーマと競合しない最小限） */
+@media (prefers-color-scheme: dark){
+  .sns-btn{ background:#1d2129; color:#e9edf3; border-color:rgba(255,255,255,.06);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 1px 2px rgba(0,0,0,.4);
+  }
+}
+
+/* ブランド色 */
+.sns-btn.github{ --accent:#000; }
+@media (prefers-color-scheme: dark){ .sns-btn.github{ --accent:#fff; } }
+.sns-btn.twitter{ --accent:#1DA1F2; }
+.sns-btn.discord{ --accent:#5865F2; }
+
+/* 余白を詰めたい場合のコンパクト密度（任意） */
+.sns-links.compact .sns-btn{ padding:8px 12px; }
+.sns-links.compact .label{ font-size:13px; }
+.sns-links.tiny .sns-btn{ padding:6px 10px; }
+.sns-links.tiny .label{ font-size:12px; }
