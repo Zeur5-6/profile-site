@@ -1,72 +1,292 @@
-/* styles.css の例 */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, sans-serif;
-  background: #111;  /* 夜基調 */
-  color: #eee;
+/* ========================================
+   Minimal Modern Profile Site
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #00d4aa;
+  --primary-dim: #00a888;
+  --dark: #0f0f0f;
+  --darker: #0a0a0a;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-tertiary: #707070;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--darker);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Subtle background gradient */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 212, 170, 0.05) 0%, transparent 50%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Header Section */
 header {
   text-align: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+  padding: 5rem 2rem 3rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 header h1 {
-  font-size: 3rem;
-  color: #00ff99;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
 }
 
+header p {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* Section Styling */
 section {
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   max-width: 800px;
-  margin: auto;
+  margin: 1.5rem auto;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  transition: border-color 0.3s ease;
 }
 
+section:hover {
+  border-color: rgba(0, 212, 170, 0.2);
+}
+
+section h2 {
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+section p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Skills List */
+#skills ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+#skills li {
+  padding: 0.85rem 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+#skills li:hover {
+  background: rgba(0, 212, 170, 0.05);
+  border-color: rgba(0, 212, 170, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Projects Section */
+.project {
+  margin-top: 1rem;
+}
+
+.project h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.project ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.project li {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.project li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+/* SNS Links Section */
+.sns-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: var(--sns-max-w, 400px);
+  width: 100%;
+  margin: 1.5rem auto 0;
+}
+
+.sns-btn {
+  --accent: #888;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 1.25rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-primary);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.sns-btn .icon {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  flex: 0 0 22px;
+  transition: transform 0.2s ease;
+}
+
+.sns-btn .label {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.sns-btn:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--accent);
+  transform: translateX(3px);
+}
+
+.sns-btn:hover .icon {
+  transform: scale(1.1);
+}
+
+/* Brand Colors */
+.sns-btn.github {
+  --accent: #ffffff;
+}
+
+.sns-btn.twitter {
+  --accent: #1DA1F2;
+}
+
+.sns-btn.discord {
+  --accent: #5865F2;
+}
+
+.sns-btn.booth {
+  --accent: #fc4d50;
+}
+
+/* Footer */
 footer {
   text-align: center;
-  padding: 2rem;
-  font-size: 0.9rem;
-  color: #999;
+  padding: 3rem 2rem 2.5rem;
+  margin-top: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* ==== SNS Buttons (scoped) ==== */
-.sns-links{ display:flex; flex-direction:column; gap:10px;
-  max-width: var(--sns-max-w, 320px); width:100%;
+footer h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
 }
 
-/* ボタン本体（ニュアンスだけ軽く。全体へ影響するリセット類なし） */
-.sns-btn{
-  --accent:#888; /* ブランド色はクラスで上書き */
-  display:flex; align-items:center; gap:10px;
-  padding:10px 14px; border-radius:12px;
-  background:#f0f2f6; color:#222; text-decoration:none;
-  border:1px solid rgba(0,0,0,.06);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 1px 2px rgba(0,0,0,.05);
-  line-height:1; cursor:pointer;
+footer p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
 }
-.sns-btn .icon{ width:20px; height:20px; display:grid; place-items:center; color:var(--accent); flex:0 0 20px; }
-.sns-btn .label{ font-size:14px; font-weight:600; }
 
-/* ほんのり視認性だけ。浮かせない */
-.sns-btn:hover{ filter:brightness(0.98); }
-.sns-btn:active{ filter:brightness(0.96); }
+/* Responsive Design */
+@media (max-width: 768px) {
+  section {
+    padding: 2rem 1.5rem;
+    margin: 1.25rem 1rem;
+  }
 
-/* ダークテーマ対応（既存テーマと競合しない最小限） */
-@media (prefers-color-scheme: dark){
-  .sns-btn{ background:#1d2129; color:#e9edf3; border-color:rgba(255,255,255,.06);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 1px 2px rgba(0,0,0,.4);
+  header {
+    padding: 4rem 1.5rem 2.5rem;
+  }
+
+  #skills ul {
+    grid-template-columns: 1fr;
   }
 }
 
-/* ブランド色 */
-.sns-btn.github{ --accent:#000; }
-@media (prefers-color-scheme: dark){ .sns-btn.github{ --accent:#fff; } }
-.sns-btn.twitter{ --accent:#1DA1F2; }
-.sns-btn.discord{ --accent:#5865F2; }
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
 
-/* 余白を詰めたい場合のコンパクト密度（任意） */
-.sns-links.compact .sns-btn{ padding:8px 12px; }
-.sns-links.compact .label{ font-size:13px; }
-.sns-links.tiny .sns-btn{ padding:6px 10px; }
-.sns-links.tiny .label{ font-size:12px; }
+::-webkit-scrollbar-track {
+  background: var(--darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-dim);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Selection Styling */
+::selection {
+  background: var(--primary);
+  color: var(--darker);
+}
+
+::-moz-selection {
+  background: var(--primary);
+  color: var(--darker);
+}
