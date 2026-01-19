@@ -59,10 +59,12 @@ header h1 {
   letter-spacing: -0.02em;
 }
 
-header p {
+header p.tagline {
   font-size: clamp(0.95rem, 2vw, 1.1rem);
   color: var(--text-secondary);
   font-weight: 400;
+  margin-top: 0.5rem;
+  opacity: 0.9;
 }
 
 /* Section Styling */
@@ -224,6 +226,38 @@ section p {
   --accent: #fc4d50;
 }
 
+/* SNS Info (non-clickable) */
+.sns-info {
+  --accent: #888;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 1.25rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-weight: 500;
+}
+
+.sns-info .icon {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  flex: 0 0 22px;
+}
+
+.sns-info .label {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.sns-info.discord-info {
+  --accent: #5865F2;
+}
+
 /* Footer */
 footer {
   text-align: center;
@@ -244,6 +278,50 @@ footer h2 {
 footer p {
   color: var(--text-secondary);
   font-size: 0.95rem;
+}
+
+.email-link {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.email-link:hover {
+  color: var(--text-primary);
+  border-bottom-color: var(--primary);
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+section:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+section:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+section:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+footer {
+  animation: fadeInUp 0.6s ease-out 0.4s both;
 }
 
 /* Responsive Design */
