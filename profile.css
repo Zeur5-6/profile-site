@@ -226,6 +226,10 @@ section p {
   --accent: #fc4d50;
 }
 
+.sns-btn.zenn {
+  --accent: #3ea8ff;
+}
+
 /* SNS Info (non-clickable) */
 .sns-info {
   --accent: #888;
